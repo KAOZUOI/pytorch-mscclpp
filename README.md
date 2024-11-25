@@ -8,14 +8,14 @@
 import os
 
 import torch
-import dummy_collectives
+import mcp_collectives
 
 import torch.distributed as dist
 
 os.environ['MASTER_ADDR'] = 'localhost'
 os.environ['MASTER_PORT'] = '29500'
 
-dist.init_process_group("cpu:gloo,cuda:dummy", rank=0, world_size=1)
+dist.init_process_group("cpu:gloo,cuda:mcp", rank=0, world_size=1)
 
 # this goes through gloo
 x = torch.ones(6)
